@@ -8,7 +8,7 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "@levit0mer/smartmaps": "0.0.3",
+    "@levit0mer/smartmaps": "https://github.com/levit0mer/smartMaps/releases/download/BasicMap/levit0mer-smartmaps-0.0.3.tgz",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
