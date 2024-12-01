@@ -8,31 +8,43 @@ import { BasicMap } from "@levit0mer/smartmaps";
 
 function App() {
   const preConfiguredList = [
-    // {
-    //   name: "Pickup food",
-    //   location: "Tel Aviv"
-    // }, {
-    //   name: "Visit the Western Wall",
-    //   location: "Jerusalem"
-    // }, {
-    //   name: "Buy a house",
-    //   location: "Haifa"
-    // }, {
-    //   name: "Go to Mosh Beach",
-    //   location: "Eilat"
-    // }
+    {
+      name: "Pickup food",
+      location: "Tel Aviv"
+    }, {
+      name: "Visit the Western Wall",
+      location: "Jerusalem"
+    }, {
+      name: "Buy a house",
+      location: "Haifa"
+    }, {
+      name: "Go to Mosh Beach",
+      location: "Eilat"
+    }
   ]
 
   const [loading, setLoading] = useState(true);
   const [tasks, setTasks] = useState(preConfiguredList); // Task list
   const [taskInput, setTaskInput] = useState(""); // Task name input
   const [location, setLocation] = useState(""); // Task location
+  const [filter, setFilter] = useState({ label: "All", value: "all" }); // Filter state
 
   const locationOptions = [
     { label: "Eilat", value: "Eilat" },
     { label: "Jerusalem", value: "Jerusalem" },
     { label: "Tel Aviv", value: "Tel Aviv" },
     { label: "Haifa", value: "Haifa" },
+  ];
+
+  const dynamicFilterOptions = [
+    { label: "All", value: "all" },
+    ...tasks
+      .map((task) => task.location)
+      .filter((value, index, self) => self.indexOf(value) === index)
+      .map((location) => ({
+        label: <Button style={{ margin: "5px 0", padding: "5px" }}>{location.charAt(0).toUpperCase() + location.slice(1)}</Button>,
+        value: location
+      })),
   ];
 
   // Add a new task
@@ -43,6 +55,11 @@ function App() {
       setLocation(""); // Clear location
     }
   };
+
+  // Filter tasks based on selected filter
+  const filteredTasks = tasks.filter((task) =>
+    !filter || filter.value === "all" ? true : task.location === filter.value
+  );
 
   // Simulate loading time
   useEffect(() => {
@@ -88,11 +105,20 @@ function App() {
             Add Task
           </Button>
 
+          {/* Filter tasks */}
+          <Dropdown
+            options={dynamicFilterOptions}
+            placeholder="Filter tasks"
+            value={filter}
+            onChange={(value) => setFilter(value || { label: "All", value: "all" })}
+            style={{ marginBottom: "20px", marginTop: "20px" }}
+          />
+
           {/* Display tasks */}
           <h2>Tasks</h2>
-          {tasks.length === 0 && <p>No tasks found.</p>}
+          {filteredTasks.length === 0 && <p>No tasks found.</p>}
           <ul>
-            {tasks.map((task, index) => (
+            {filteredTasks.map((task, index) => (
               <li key={index}>
                 {task.name} - <strong>{task.location}</strong>
               </li>
