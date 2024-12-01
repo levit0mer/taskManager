@@ -1,4 +1,4 @@
-# A simple Task Manager
+# A Simple Task Manager
 
 In this sample project, I aim to build a simple Task Manager while using UI components from the open-source of [Monday Vibe](https://github.com/mondaycom/vibe).\
 This Task Manager eventually will let you add tasks add filter them by task geo location with a map that I added.
