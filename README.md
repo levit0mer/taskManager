@@ -11,5 +11,5 @@ This Task Manager eventually will let you add tasks add filter them by task geo 
 
 ## Test it out
 
-`npm install`
+`npm install`\
 `npm start`
