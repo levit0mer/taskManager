@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useRef, useEffect, useState } from 'react';
+import Loading from "./components/Loading";
+import Navbar from "./components/Navbar";
+import { Button, TextField, Dropdown } from "@vibe/core";
+import "@vibe/core/tokens"; // Load CSS tokens
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  // Simulate loading time
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar />
+      <div style={{margin: "auto" }}>
+        <div style={{ padding: "20px", maxWidth: "500px", margin: "auto" }}>
+          <h1>Your Simple Task Manager</h1>
+        </div>
+      </div>
+    </>
   );
 }
 

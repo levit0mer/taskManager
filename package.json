@@ -2,14 +2,20 @@
   "name": "taskmanager",
   "version": "0.1.0",
   "private": true,
+  "author": "Tomer Levi",
+  "license": "MIT",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@levit0mer/smartmaps": "0.0.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "@vibe/core": "^3.0.0",
+    "lottie-react": "^2.4.0",
+    "@lottiefiles/react-lottie-player": "^3.5.4"
   },
   "scripts": {
     "start": "react-scripts start",
