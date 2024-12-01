@@ -13,3 +13,8 @@ This Task Manager eventually will let you add tasks add filter them by task geo 
 
 `npm install`\
 `npm start`
+
+## Screenshots
+
+![SCR-20241201-nvav](https://github.com/user-attachments/assets/903e98fa-a365-4845-808c-3485dad99130)
+![SCR-20241201-nvgd](https://github.com/user-attachments/assets/f984d8b8-4567-4b18-b19a-abd2470b310c)
