@@ -42,8 +42,8 @@ function App() {
       .map((task) => task.location)
       .filter((value, index, self) => self.indexOf(value) === index)
       .map((location) => ({
-        label: <Button style={{ margin: "5px 0", padding: "5px" }}>{location.charAt(0).toUpperCase() + location.slice(1)}</Button>,
-        value: location
+        label: location.charAt(0).toUpperCase() + location.slice(1),
+        value: location,
       })),
   ];
 
@@ -111,6 +111,24 @@ function App() {
             placeholder="Filter tasks"
             value={filter}
             onChange={(value) => setFilter(value || { label: "All", value: "all" })}
+            optionRenderer={({ label, value }) => {
+              if (value === "all") {
+                return <div style={{ fontWeight: "bold" }}>{label}</div>;
+              }
+              return (
+                <Button
+                  style={{
+                    margin: "5px 0",
+                    padding: "5px",
+                    display: "block",
+                    width: "100%",
+                    textAlign: "left",
+                  }}
+                >
+                  {label}
+                </Button>
+              );
+            }}
             style={{ marginBottom: "20px", marginTop: "20px" }}
           />
 
